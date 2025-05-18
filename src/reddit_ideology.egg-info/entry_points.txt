@@ -1,0 +1,2 @@
+[console_scripts]
+reddit-ideology = reddit_ideology.cli:main

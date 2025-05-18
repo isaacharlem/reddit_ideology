@@ -1,0 +1,28 @@
+data:
+  conservative_path: "../data/cons_data.json"
+  liberal_path: "../data/lib_data.json"
+embedding:
+  model_name: "sentence-transformers/all-mpnet-base-v2"
+  batch_size: 256
+  device: "cuda"
+topic_model:
+  method: "cluster"
+  cluster:
+    umap_neighbors: 15
+    umap_min_dist: 0.0
+    hdbscan_min_cluster_size: 15
+analysis:
+  time_interval: "Y"
+events:
+  - name: "Election 2012"
+    date: "2012-11-06"
+  - name: "ACA Ruling"
+    date: "2012-06-28"
+  - name: "Election 2016"
+    date: "2016-11-08"
+  - name: "Obergefell v. Hodges"
+    date: "2015-06-26"
+output:
+  cache_dir: "../results/cache"
+  plots_dir: "../results/plots"
+  metrics_dir: "../results/metrics"

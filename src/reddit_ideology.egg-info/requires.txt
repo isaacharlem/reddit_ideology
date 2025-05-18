@@ -1,0 +1,14 @@
+PyYAML
+sentence-transformers
+torch
+gensim
+hdbscan
+umap-learn
+scikit-learn
+pandas
+numpy
+scipy
+matplotlib
+seaborn
+click
+accelerate
