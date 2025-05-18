@@ -1,6 +1,6 @@
 data:
-  conservative_path: "../data/cons_data.json"
-  liberal_path: "../data/lib_data.json"
+  conservative_path: "data/cons_data.json"
+  liberal_path: "data/lib_data.json"
 embedding:
   model_name: "sentence-transformers/all-mpnet-base-v2"
   batch_size: 256
@@ -23,6 +23,6 @@ events:
   - name: "Obergefell v. Hodges"
     date: "2015-06-26"
 output:
-  cache_dir: "../results/cache"
-  plots_dir: "../results/plots"
-  metrics_dir: "../results/metrics"
+  cache_dir: "results/cache"
+  plots_dir: "results/plots"
+  metrics_dir: "results/metrics"
