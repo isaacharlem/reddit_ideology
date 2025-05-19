@@ -58,7 +58,6 @@ venv.bak/
 *.egg-info/
 
 # Output/results
-results/cache/*
 results/metrics/*
 results/plots/*
 
