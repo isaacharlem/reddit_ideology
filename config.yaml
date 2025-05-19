@@ -34,7 +34,7 @@ output:
   metrics_dir: "results/metrics"
 
 openai:
-  api_key: "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"
+  api_key: "<OPENAI-API-KEY>"
   model: "gpt-4o"                        # or another model
   max_terms: 10                         # how many top terms to send for naming
 
