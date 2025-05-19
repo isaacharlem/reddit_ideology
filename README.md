@@ -1,6 +1,6 @@
 # Computational Methods for Social Science: Reddit Ideology
 
-**Group Members:** Charlie Eden, Isaac Harlem, Ahmed Ahmed
+**Group Members:** Isaac Harlem, Charlie Eden, Ahmed Ahmed
 
 ---
 
@@ -171,4 +171,4 @@ stats:
 
 Please cite our project as:
 
-Eden, C., Harlem, I., & Ahmed, A. (2025). *Computational Methods for Social Science: Reddit Ideology*. GitHub repository. [https://github.com/isaacharlem/reddit\_ideology](https://github.com/isaacharlem/reddit_ideology)
+Harlem, I., Eden, C., & Ahmed, A. (2025). *Computational Methods for Social Science: Reddit Ideology*. GitHub repository. [https://github.com/isaacharlem/reddit\_ideology](https://github.com/isaacharlem/reddit_ideology)
