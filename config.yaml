@@ -1,7 +1,7 @@
 data:
   conservative_path: "data/cons_data.json"
   liberal_path: "data/lib_data.json"
-
+  
 embedding:
   model_name: "sentence-transformers/all-mpnet-base-v2"
   batch_size: 256
@@ -25,6 +25,8 @@ events:
     date: "2016-11-08"
   - name: "Election 2020"
     date: "2020-11-08"
+  - name: "George Floyd Murder"
+    date: "2020-05-25"
 
 output:
   cache_dir: "results/cache"
@@ -32,10 +34,10 @@ output:
   metrics_dir: "results/metrics"
 
 openai:
-  api_key: "<YOUR_OPENAI_API_KEY>"      # or leave blank and set via ENV var
-  model: "gpt-4o"
-  max_terms: 40                         # how many top terms to send for naming
+  api_key: "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"
+  model: "gpt-4o"                        # or another model
+  max_terms: 10                         # how many top terms to send for naming
 
 stats:
   trend_test: "linregress"              # type of test for time‐trend p-values
-  prepost_window: 3                     # months before/after for event tests
+  prepost_window: 3                     # years before/after for event tests
