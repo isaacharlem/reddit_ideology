@@ -1,7 +1,7 @@
 data:
   conservative_path: "data/cons_data.json"
   liberal_path: "data/lib_data.json"
-  
+
 embedding:
   model_name: "sentence-transformers/all-mpnet-base-v2"
   batch_size: 256
@@ -16,6 +16,7 @@ topic_model:
 
 analysis:
   time_interval: "Y"
+  top_n: 5
 
 events:
   - name: "Election 2012"
@@ -34,8 +35,8 @@ output:
 
 openai:
   api_key: "<YOUR_OPENAI_API_KEY>"      # or leave blank and set via ENV var
-  model: "gpt-3.5-turbo"                # or another model
-  max_terms: 10                         # how many top terms to send for naming
+  model: "gpt-4o"
+  max_terms: 40                         # how many top terms to send for naming
 
 stats:
   trend_test: "linregress"              # type of test for time‐trend p-values

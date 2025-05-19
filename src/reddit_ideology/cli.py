@@ -168,26 +168,29 @@ def run(ctx):
     cons_freq['topic_label'] = cons_freq['topic'].map(cons_labels)
     lib_freq['topic_label']  = lib_freq['topic'].map(lib_labels)
 
-    # Top 10 topic trends (per subreddit)
+    # Get top_n from config, default to 5 if not specified
+    top_n = cfg.get('analysis', {}).get('top_n', 5)
+    
+    # Top N topic trends (per subreddit)
     viz.plot_topic_prevalence(
         cons_freq,
         period_col='period',
         topic_col='topic_label',
         count_col='count',
-        top_n=10,
+        top_n=top_n,
         normalize=True,
-        title='Top 10 Conservative Topics Over Time',
-        filename='cons_top10_topics.png'
+        title=f'Top {top_n} Conservative Topics Over Time',
+        filename=f'cons_top{top_n}_topics.png'
     )
     viz.plot_topic_prevalence(
         lib_freq,
         period_col='period',
         topic_col='topic_label',
         count_col='count',
-        top_n=10,
+        top_n=top_n,
         normalize=True,
-        title='Top 10 Liberal Topics Over Time',
-        filename='lib_top10_topics.png'
+        title=f'Top {top_n} Liberal Topics Over Time',
+        filename=f'lib_top{top_n}_topics.png'
     )
 
     # Combined trends for conservatives vs liberals
@@ -197,32 +200,10 @@ def run(ctx):
         period_col='period',
         topic_col='topic_label',
         count_col='count',
-        top_n=10,
+        top_n=top_n,
         normalize=True,
-        title='Top 10 Topics: Conservative vs Liberal',
-        filename='combined_top10_topics.png'
-    )
-
-    viz.plot_topic_ribbons(
-        lib_freq,
-        period_col='period',
-        topic_col='topic_label',
-        count_col='count',
-        top_n=10,
-        normalize=True,
-        title='Top 10 Liberal Topics (with ribbons)',
-        filename='lib_top10_ribbons.png'
-    )
-
-    viz.plot_topic_ribbons(
-        cons_freq,
-        period_col='period',
-        topic_col='topic_label',
-        count_col='count',
-        top_n=10,
-        normalize=True,
-        title='Top 10 Conservative Topics (with ribbons)',
-        filename='cons_top10_ribbons.png'
+        title=f'Top {top_n} Topics: Conservative vs Liberal',
+        filename=f'combined_top{top_n}_topics.png'
     )
 
 if __name__ == '__main__':
