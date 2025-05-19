@@ -15,26 +15,28 @@ It is highly recommended to use "cuda" if you have it available as the embedding
 
 2. Create virtual environment (using conda):
 
-    conda create -n red_id python=3.10
+        conda create -n red_id python=3.10
 
 3. Activate virtual environment (using conda):
 
-    conda activate red_id
+        conda activate red_id
 
 4. Install package in editable mode
 
-    pip install -e .
+        pip install -e .
 
-5. Set up OpenAI API key (here)[https://openai.com/index/openai-api/]
+5. Set up OpenAI API key (here)[https://openai.com/index/openai-api/] with read/write permissions.
 
-5. Set up config.yaml:
+6. Create my_config.yaml:
 
-    cp config.yaml my_config.yaml
+        cp config.yaml my_config.yaml
 
-6. Set up OpenAI API key
+7. Set up OpenAI API key: in my_config.yaml, set the api_key under openai as well as any other parameters you need to change like device.
 
-5. (Optional) Request UChicago SLURM resources:
+8. (Optional) Request UChicago SLURM resources:
 
-    srun -p general --gres=gpu:a100:4 --pty --cpus-per-task=32 --mem=200G -t 4:00:00 /bin/bash
+        srun -p general --gres=gpu:a100:4 --pty --cpus-per-task=32 --mem=200G -t 4:00:00 /bin/bash
 
-6. 
+9. Run the pipeline:
+
+        reddit-ideology --config my_config.yaml run
