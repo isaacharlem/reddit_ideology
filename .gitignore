@@ -56,12 +56,14 @@ venv.bak/
 
 # Package metadata
 *.egg-info/
+
 src/reddit_ideology.egg-info
 
 # Output/results
 # results/cache/*
 # results/metrics/*
 # results/plots/*
+
 
 # Data
 # data/*.json

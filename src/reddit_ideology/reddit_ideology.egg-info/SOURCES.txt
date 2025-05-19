@@ -1,8 +1,0 @@
-README.md
-pyproject.toml
-src/reddit_ideology/reddit_ideology.egg-info/PKG-INFO
-src/reddit_ideology/reddit_ideology.egg-info/SOURCES.txt
-src/reddit_ideology/reddit_ideology.egg-info/dependency_links.txt
-src/reddit_ideology/reddit_ideology.egg-info/entry_points.txt
-src/reddit_ideology/reddit_ideology.egg-info/requires.txt
-src/reddit_ideology/reddit_ideology.egg-info/top_level.txt
