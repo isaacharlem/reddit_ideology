@@ -24,7 +24,7 @@ class Visualizer:
         if events:
             for ev in events:
                 # Convert event date to datetime if needed
-                date = ev.get('date')
+                date = ev.get("date")
                 try:
                     date_dt = pd.to_datetime(date)
                 except Exception:
@@ -33,7 +33,7 @@ class Visualizer:
                 plt.text(
                     date_dt,
                     plt.ylim()[0] - 0.02,
-                    ev.get('name', ''),
+                    ev.get("name", ""),
                     rotation=90,
                     verticalalignment="bottom",
                 )
@@ -75,14 +75,14 @@ class Visualizer:
     def plot_topic_prevalence(
         self,
         df: pd.DataFrame,
-        period_col: str = 'period',
-        topic_col: str = 'topic',
-        count_col: str = 'count',
+        period_col: str = "period",
+        topic_col: str = "topic",
+        count_col: str = "count",
         group_col: str = None,
         top_n: int = 10,
         normalize: bool = True,
-        title: str = '',
-        filename: str = '',
+        title: str = "",
+        filename: str = "",
     ):
         """
         Plot top_n topics’ prevalence over time. If normalize=True, uses proportions.
@@ -92,21 +92,27 @@ class Visualizer:
         # Normalize counts to proportions per period (and group if provided)
         if normalize:
             if group_col:
-                data['prop'] = data.groupby([group_col, period_col])[count_col] \
-                    .transform(lambda x: x / x.sum())
+                data["prop"] = data.groupby([group_col, period_col])[
+                    count_col
+                ].transform(lambda x: x / x.sum())
             else:
-                data['prop'] = data.groupby(period_col)[count_col] \
-                    .transform(lambda x: x / x.sum())
-            value_col = 'prop'
+                data["prop"] = data.groupby(period_col)[count_col].transform(
+                    lambda x: x / x.sum()
+                )
+            value_col = "prop"
         else:
             value_col = count_col
 
         # Determine top topics overall (or per group if provided)
         if group_col:
             # sum proportions or counts across both groups for ranking
-            ranking = data.groupby(topic_col)[value_col].sum().nlargest(top_n).index
+            ranking = (
+                data.groupby(topic_col)[value_col].sum().nlargest(top_n).index
+            )
         else:
-            ranking = data.groupby(topic_col)[value_col].sum().nlargest(top_n).index
+            ranking = (
+                data.groupby(topic_col)[value_col].sum().nlargest(top_n).index
+            )
         plot_df = data[data[topic_col].isin(ranking)]
 
         plt.figure(figsize=(12, 6))
@@ -119,7 +125,7 @@ class Visualizer:
                 style=group_col,
                 markers=True,
                 dashes=False,
-                errorbar=None
+                errorbar=None,
             )
         else:
             sns.lineplot(
@@ -127,10 +133,10 @@ class Visualizer:
                 x=period_col,
                 y=value_col,
                 hue=topic_col,
-                marker='o',
-                errorbar=None
+                marker="o",
+                errorbar=None,
             )
-        plt.title(title or f'Top {top_n} Topics Over Time')
+        plt.title(title or f"Top {top_n} Topics Over Time")
         plt.tight_layout()
         if filename:
             plt.savefig(os.path.join(self.plots_dir, filename))
@@ -140,13 +146,13 @@ class Visualizer:
         self,
         df_cons: pd.DataFrame,
         df_lib: pd.DataFrame,
-        period_col: str = 'period',
-        topic_col: str = 'topic',
-        count_col: str = 'count',
+        period_col: str = "period",
+        topic_col: str = "topic",
+        count_col: str = "count",
         top_n: int = 10,
         normalize: bool = True,
-        title: str = '',
-        filename: str = '',
+        title: str = "",
+        filename: str = "",
     ):
         """
         Plot combined topic trends for conservatives vs liberals on the same chart.
@@ -154,18 +160,17 @@ class Visualizer:
         """
         df_cons = df_cons.copy()
         df_lib = df_lib.copy()
-        df_cons['group'] = 'conservative'
-        df_lib['group'] = 'liberal'
+        df_cons["group"] = "conservative"
+        df_lib["group"] = "liberal"
         combined = pd.concat([df_cons, df_lib], ignore_index=True)
         self.plot_topic_prevalence(
             combined,
             period_col=period_col,
             topic_col=topic_col,
             count_col=count_col,
-            group_col='group',
+            group_col="group",
             top_n=top_n,
             normalize=normalize,
-            title=title or f'Top {top_n} Topics: Conservative vs Liberal',
-            filename=filename
+            title=title or f"Top {top_n} Topics: Conservative vs Liberal",
+            filename=filename,
         )
-
