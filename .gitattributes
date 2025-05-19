@@ -1,3 +1,4 @@
 data/*.json filter=lfs diff=lfs merge=lfs -text
 data/cons_data.json filter=lfs diff=lfs merge=lfs -text
 data/lib_data.json filter=lfs diff=lfs merge=lfs -text
+results/cache/* filter=lfs diff=lfs merge=lfs -text
