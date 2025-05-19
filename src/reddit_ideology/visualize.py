@@ -32,7 +32,7 @@ class Visualizer:
                 plt.axvline(x=date_dt, linestyle="--", color="gray")
                 plt.text(
                     date_dt,
-                    plt.ylim()[0] - 0.01,
+                    plt.ylim()[0] - 0.02,
                     ev.get('name', ''),
                     rotation=90,
                     verticalalignment="bottom",
