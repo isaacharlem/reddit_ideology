@@ -58,8 +58,9 @@ venv.bak/
 *.egg-info/
 
 # Output/results
-results/metrics/*
-results/plots/*
+# results/cache/*
+# results/metrics/*
+# results/plots/*
 
 # Data
 # data/*.json
