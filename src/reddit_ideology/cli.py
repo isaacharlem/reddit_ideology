@@ -40,7 +40,7 @@ def run(ctx):
     """
     cfg = ctx.obj["config"]
 
-    # 1) Parse event dates to pandas.Timestamp
+    # Parse event dates to pandas.Timestamp
     events = []
     for ev in cfg.get("events", []):
         try:
@@ -49,10 +49,10 @@ def run(ctx):
         except Exception:
             continue
 
-    # 2) Initialize OpenAI if labeling topics
+    # Initialize OpenAI to label topics
     client = init_openai(cfg.get("openai", {}).get("api_key"))
 
-    # 3) Load and preprocess data
+    # Load and preprocess data
     dl = DataLoader(
         cfg["data"]["conservative_path"], cfg["data"]["liberal_path"]
     )
@@ -61,7 +61,7 @@ def run(ctx):
     cons_df = pp.apply(cons_df)
     lib_df = pp.apply(lib_df)
 
-    # 4) Generate embeddings (with cache)
+    # Generate embeddings (with cache)
     emb_cfg = cfg["embedding"]
     embedder = EmbeddingModel(
         model_name=emb_cfg["model_name"],
@@ -72,7 +72,7 @@ def run(ctx):
     cons_emb = embedder.embed(cons_df["clean_text"].tolist(), "conservative")
     lib_emb = embedder.embed(lib_df["clean_text"].tolist(), "liberal")
 
-    # 5) Topic modeling and labeling
+    # Topic modeling and labeling
     tm_cfg = cfg["topic_model"]["cluster"]
     topic_model = EmbeddingClusterTopicModel(
         umap_neighbors=tm_cfg["umap_neighbors"],
@@ -93,6 +93,7 @@ def run(ctx):
         return term_counts
 
     max_terms = cfg.get("openai", {}).get("max_terms", 10)
+
     # Label topics via OpenAI
     cons_terms = extract_top_terms(cons_df, cons_topics, max_terms)
     cons_labels = {
@@ -105,7 +106,7 @@ def run(ctx):
         for tid, terms in lib_terms.items()
     }
 
-    # 6) Compute metrics
+    # Compute metrics
     mc = MetricsCalculator(cfg["output"]["metrics_dir"])
     cons_metrics = mc.topic_entropy_and_count(
         cons_topics, cons_df["timestamp"], freq=cfg["analysis"]["time_interval"]
@@ -133,7 +134,7 @@ def run(ctx):
         freq=cfg["analysis"]["time_interval"],
     )
 
-    # 7) Statistical tests & p-values
+    # Statistical tests & p-values
     # Q1: trend in topic entropy
     years_con = cons_metrics["period"].dt.year.astype(int)
     p_ent_con = stats.linregress(years_con, cons_metrics["entropy"]).pvalue
@@ -170,7 +171,7 @@ def run(ctx):
     p_echo = stats.ttest_rel(merged["con"], merged["lib"]).pvalue
     click.echo(f"Q3: Intra-group similarity difference p-value = {p_echo:.3g}")
 
-    # 8) Visualizations
+    # Visualizations
     viz = Visualizer(cfg["output"]["plots_dir"])
 
     # Diversity plots
