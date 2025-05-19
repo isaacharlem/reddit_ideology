@@ -58,9 +58,9 @@ venv.bak/
 src/reddit_ideology.egg-info/
 
 # Output/results
-results/cache/
-results/metrics/
-results/plots/
+results/cache/*
+results/metrics/*
+results/plots/*
 
 # Data
 data/*.json
