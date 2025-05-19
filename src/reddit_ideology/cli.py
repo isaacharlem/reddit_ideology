@@ -203,5 +203,27 @@ def run(ctx):
         filename='combined_top10_topics.png'
     )
 
+    viz.plot_topic_ribbons(
+        lib_freq,
+        period_col='period',
+        topic_col='topic_label',
+        count_col='count',
+        top_n=10,
+        normalize=True,
+        title='Top 10 Liberal Topics (with ribbons)',
+        filename='lib_top10_ribbons.png'
+    )
+
+    viz.plot_topic_ribbons(
+        cons_freq,
+        period_col='period',
+        topic_col='topic_label',
+        count_col='count',
+        top_n=10,
+        normalize=True,
+        title='Top 10 Conservative Topics (with ribbons)',
+        filename='cons_top10_ribbons.png'
+    )
+
 if __name__ == '__main__':
     main()

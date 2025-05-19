@@ -119,6 +119,7 @@ class Visualizer:
                 style=group_col,
                 markers=True,
                 dashes=False,
+                ci=None
             )
         else:
             sns.lineplot(
@@ -127,8 +128,57 @@ class Visualizer:
                 y=value_col,
                 hue=topic_col,
                 marker='o',
+                ci=None
             )
         plt.title(title or f'Top {top_n} Topics Over Time')
+        plt.tight_layout()
+        if filename:
+            plt.savefig(os.path.join(self.plots_dir, filename))
+        plt.close()
+
+    def plot_topic_ribbons(
+        self,
+        df: pd.DataFrame,
+        period_col: str = 'period',
+        topic_col: str = 'topic',
+        count_col: str = 'count',
+        top_n: int = 10,
+        normalize: bool = True,
+        title: str = '',
+        filename: str = '',
+    ):
+        """
+        Like plot_topic_prevalence, but SHOWS Seaborn's CI ribbons
+        around each topic line (default 95% bootstrap CI).
+        """
+        data = df.copy()
+        # normalize if requested
+        if normalize:
+            data['prop'] = data.groupby(period_col)[count_col] \
+                                 .transform(lambda x: x / x.sum())
+            value_col = 'prop'
+        else:
+            value_col = count_col
+
+        # pick top_n topics by overall sum
+        top_topics = (
+            data.groupby(topic_col)[value_col]
+                .sum()
+                .nlargest(top_n)
+                .index
+        )
+        plot_df = data[data[topic_col].isin(top_topics)]
+
+        plt.figure(figsize=(12, 6))
+        sns.lineplot(
+            data=plot_df,
+            x=period_col,
+            y=value_col,
+            hue=topic_col,
+            marker='o',
+            # note: omit ci=None so ribbons appear
+        )
+        plt.title(title or f'Top {top_n} Topic Ribbons')
         plt.tight_layout()
         if filename:
             plt.savefig(os.path.join(self.plots_dir, filename))

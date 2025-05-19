@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "reddit_ideology"
 version = "0.1.0"
-description = "Semantic analysis pipeline for Reddit ideological discourse"
+description = "Semantic analysis pipeline for Reddit ideological discourse."
 authors = [{ name = "Isaac Harlem", email = "isaacharlem@uchicago.edu" }]
 readme = "README.md"
 requires-python = ">=3.10"
