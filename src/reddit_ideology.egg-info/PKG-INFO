@@ -19,3 +19,4 @@ Requires-Dist: matplotlib
 Requires-Dist: seaborn
 Requires-Dist: click
 Requires-Dist: accelerate
+Requires-Dist: openai

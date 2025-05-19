@@ -12,3 +12,4 @@ matplotlib
 seaborn
 click
 accelerate
+openai

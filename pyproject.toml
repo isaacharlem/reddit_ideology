@@ -23,7 +23,8 @@ dependencies = [
     "matplotlib",  
     "seaborn",  
     "click",
-    "accelerate"
+    "accelerate",
+    "openai"
 ]
 
 [project.scripts]

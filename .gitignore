@@ -1,12 +1,69 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-data/
-.DS_Store
-results/
-*.log
-.env
-.venv
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+parts/
+var/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.pytest_cache/
+pytest_cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Virtual environments
 env/
 venv/
+.venv/
 ENV/
+env.bak/
+venv.bak/
+
+# macOS files
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# conda environments
+*.conda/
+*.condarc
+
+# logs
+*.log
+
+# Package metadata
+src/reddit_ideology.egg-info/
+
+# Output/results
+results/cache/
+results/metrics/
+results/plots/
+
+# Data
+data/
+
+# Hidden config
+my_config.yaml
