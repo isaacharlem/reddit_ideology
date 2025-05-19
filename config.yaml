@@ -10,9 +10,9 @@ embedding:
 topic_model:
   method: "cluster"
   cluster:
-    umap_neighbors: 15
+    umap_neighbors: 20
     umap_min_dist: 0.0
-    hdbscan_min_cluster_size: 15
+    hdbscan_min_cluster_size: 20
 
 analysis:
   time_interval: "Y"
