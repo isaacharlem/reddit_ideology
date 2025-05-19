@@ -63,7 +63,7 @@ results/metrics/
 results/plots/
 
 # Data
-data/
+data/*.json
 
 # Hidden config
 my_config.yaml
