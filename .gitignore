@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+*.__pycache__/
 *.py[cod]
 *$py.class
 
@@ -55,7 +55,7 @@ venv.bak/
 *.log
 
 # Package metadata
-src/reddit_ideology.egg-info/
+*.egg-info/
 
 # Output/results
 results/cache/*
