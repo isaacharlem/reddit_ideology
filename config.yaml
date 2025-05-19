@@ -21,12 +21,10 @@ analysis:
 events:
   - name: "Election 2012"
     date: "2012-11-06"
-  - name: "ACA Ruling"
-    date: "2012-06-28"
   - name: "Election 2016"
     date: "2016-11-08"
-  - name: "Obergefell v. Hodges"
-    date: "2015-06-26"
+  - name: "Election 2020"
+    date: "2020-11-08"
 
 output:
   cache_dir: "results/cache"
