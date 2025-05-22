@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reddit_ideology"
+version = "0.1.0"
+description = "Semantic analysis pipeline for Reddit ideological discourse."
+authors = [{ name = "Isaac Harlem", email = "isaacharlem@uchicago.edu" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PyYAML",  
+    "sentence-transformers",  
+    "torch",  
+    "gensim",  
+    "hdbscan",  
+    "umap-learn",  
+    "scikit-learn",  
+    "pandas",  
+    "numpy",  
+    "scipy",  
+    "matplotlib",  
+    "seaborn",  
+    "click",
+    "accelerate",
+    "openai",
+    "bertopic",
+    "keybert"
+]
+
+[project.scripts]
+reddit-ideology = "reddit_ideology.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["reddit_ideology*"]

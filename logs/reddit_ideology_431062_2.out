@@ -1,0 +1,13 @@
+Which mail: /usr/bin/mail
+Which sendmail: /usr/sbin/sendmail
+Q1: Entropy trend p-values => conservative=0.447, liberal=0.58
+Q2 (Election 2012): cross-sim p-value = nan
+Q2 (Sandy Hook Shooting): cross-sim p-value = nan
+Q2 (Election 2016): cross-sim p-value = nan
+Q2 (Breonna Taylor Murder): cross-sim p-value = nan
+Q2 (COVID-19 Pandemic): cross-sim p-value = nan
+Q2 (San Bernardino Shooting): cross-sim p-value = nan
+Q2 (Parkland Shooting): cross-sim p-value = nan
+Q2 (Election 2020): cross-sim p-value = nan
+Q2 (George Floyd Murder): cross-sim p-value = nan
+Q3: Intra-group similarity difference p-value = 1.82e-05

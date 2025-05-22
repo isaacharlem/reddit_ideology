@@ -1,0 +1,4 @@
+Which mail: /usr/bin/mail
+Which sendmail: /usr/sbin/sendmail
+Q1: Entropy trend p-values => conservative=0.874, liberal=0.337
+Q3: Intra-group similarity difference p-value = 0.00715

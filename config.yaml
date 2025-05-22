@@ -1,0 +1,43 @@
+data:
+  conservative_path: "data/cons_data.json"
+  liberal_path: "data/lib_data.json"
+  
+embedding:
+  model_name: "sentence-transformers/all-mpnet-base-v2"
+  batch_size: 256
+  device: "cuda"
+
+topic_model:
+  method: "cluster"
+  cluster:
+    umap_neighbors: 20
+    umap_min_dist: 0.0
+    hdbscan_min_cluster_size: 20
+
+analysis:
+  time_interval: "Y"
+  top_n: 5
+
+events:
+  - name: "Election 2012"
+    date: "2012-11-06"
+  - name: "Election 2016"
+    date: "2016-11-08"
+  - name: "Election 2020"
+    date: "2020-11-08"
+  - name: "George Floyd Murder"
+    date: "2020-05-25"
+
+output:
+  cache_dir: "results/cache"
+  plots_dir: "results/plots"
+  metrics_dir: "results/metrics"
+
+openai:
+  api_key: "<OPENAI-API-KEY>"
+  model: "gpt-4o"                        # or another model
+  max_terms: 10                         # how many top terms to send for naming
+
+stats:
+  trend_test: "linregress"              # type of test for time‐trend p-values
+  prepost_window: 3                     # years before/after for event tests
